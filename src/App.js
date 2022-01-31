@@ -2,6 +2,7 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCustomerAction, removeCustomerAction } from './store/customerReducer';
 import { addCashAction, getCashAction } from './store/cashReducer';
+import { fetchCustomers } from './utils/customersApi';
 
 function App() {
   const dispatch = useDispatch();
@@ -53,15 +54,16 @@ function App() {
         </button>
         <button
           type="button"
-          onClick={() => getCash(Number(prompt()))}
+          onClick={() => dispatch(fetchCustomers())}
         >
-          Удалить клиента
+          Получить базу клиентов
         </button>
       </div>
       {customers.length > 0 ? (
         <div>
           {customers.map(customer =>
             <div
+              key={customer.id}
               onClick={() => removeCustomer(customer)}
             >
               {customer.name}
