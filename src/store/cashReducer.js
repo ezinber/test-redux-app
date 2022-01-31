@@ -2,6 +2,9 @@ const defaultState = {
   cash: 5,
 }
 
+const ADD_CASH = 'ADD_CASH';
+const GET_CASH = 'GET_CASH';
+
 // action = { type:'', payload:'' }
 export const cashReducer = (state = defaultState, action) => {
   switch(action.type) {
@@ -13,3 +16,6 @@ export const cashReducer = (state = defaultState, action) => {
       return state;
   }
 }
+
+export const addCashAction = (payload) => ({ type: ADD_CASH, payload});
+export const getCashAction = (payload) => ({ type: GET_CASH, payload});
